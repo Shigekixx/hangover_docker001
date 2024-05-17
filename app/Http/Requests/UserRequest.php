@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -44,5 +44,7 @@ class RegisterRequest extends FormRequest
         // バリデーションが成功した時に実行したい処理
     }
 }
+
+//Models名.phpに変更する
 
 

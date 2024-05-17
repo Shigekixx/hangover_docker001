@@ -25,10 +25,21 @@
         </div>
         <div>
             <label for = "password" >パスワード</label>
-            <input type="text" id="password" name="password">
+            <input type="password" id="password" name="password">
         </div>
         <button type="submit" > 登録 </button>
     </form>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    
 
 
 </body>
