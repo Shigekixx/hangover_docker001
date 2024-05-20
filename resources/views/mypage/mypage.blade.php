@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <h1>ID:{{ $user->id }}</h1>
-    <h2>氏名：{{ $user->名前 }}</h2>
+    <p>こんちわ</p>
 </body>
 </html>
