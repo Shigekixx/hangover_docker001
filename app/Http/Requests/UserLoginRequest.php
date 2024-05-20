@@ -28,6 +28,15 @@ class UserLoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'email.required'=>'メールアドレスを入力してください',
+            'email.email'=>'メールアドレスの形式を変更してください',
+            'password.required'=>'パスワードを入力してください',
+        ];
+    }
+
     public function authenticate()
     {
         $credentials = $this->only('email', 'password');
