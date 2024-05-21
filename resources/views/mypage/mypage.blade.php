@@ -71,5 +71,10 @@
     </div>
     @endif
 
+    <br>
+    <form action ="{{route('login.logout')}}" method="POST">
+        @csrf
+        <button type="submit"> ログアウト </button>
+    </form>
 </body>
 </html>

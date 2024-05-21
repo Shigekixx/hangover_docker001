@@ -14,4 +14,5 @@ Route::POST('/users',[UsersController::class,'register'])->name('users.register'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage',[UsersController::class,'mypage'])->name('users.mypage');
     Route::POST('/mypage',[MypageController::class,'diary'])->name('mypage.diary');
+    Route::POST('/logout',[LoginController::class,'logout'])->name('login.logout');
 });
