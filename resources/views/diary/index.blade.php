@@ -20,7 +20,9 @@
         <br>
         <p>二日酔い：{{ $diary->hangover }}</p>
         <br>
+        @if($diary->memo)
         <p>一言メモ：{{ $diary->memo }}</p>
+        @endif
         <br>
         @if($diary->photo)
         <p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p>  
