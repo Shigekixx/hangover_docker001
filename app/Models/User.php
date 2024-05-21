@@ -9,11 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;   
-
-    public function diary(){
-        return $this->hasMany(Diary::class);
-    }
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +18,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'account',
         'email',
         'password',
     ];
