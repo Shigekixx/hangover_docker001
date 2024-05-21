@@ -38,24 +38,4 @@ class UsersController extends Controller
         $user = DB::table('users')->find($id);
         return view('mypage.mypage',['user_info'=>$user]);
     }
-
-    //マイページにて新規記録の入力
-    public function diary(DiaryRequest $request)
-    {
-        $diary = new Diary;
-        $diary->user_id = auth()->id();
-        $diary->sleep = $request->sleep;
-        $diary->tired = $request->tired;
-        $diary->drink = $request->drink;
-        $diary->hangover = $request->hangover;
-        $diary->memo = $request->memo;
-        if ($request->hasFile('photo')) {
-            $diary->photo = $request->file('photo')->store('public');
-        } else {
-            $diary->photo = null;
-        }
-
-        $diary->save();
-        return redirect()->route('mypage.mypage');
-    }
 }

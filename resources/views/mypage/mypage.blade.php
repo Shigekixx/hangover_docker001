@@ -15,7 +15,8 @@
         @csrf
         <div>
         <label for="diary">本日の記録</label>
-
+        </div>
+        <br>
         <select name="sleep" id="sleep">
             <option value="">--睡眠--</option>
             <option value="0">1 全然足りない</option>

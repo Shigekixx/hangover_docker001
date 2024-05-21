@@ -19,6 +19,18 @@ class LoginController extends Controller
     //ログインメソッド
     public function login(UserLoginRequest $request)
     {
-        return $request->authenticate(); // マイページにリダイレクト
+        $credentials = $request->validated();
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('users.mypage'); // ログイン後のリダイレクト先を指定
+        }
+
+        return back()->withErrors(['email' => 'メールアドレス・パスワードに不備があります']); // ログイン画面に戻る
+    }
+
+    public function authenticate()
+    {
+        
     }
 }

@@ -28,7 +28,6 @@ class DiaryRequest extends FormRequest
         'tired'=>'required',
         'drink'=>'required',
         'hangover'=>'required',
-        
         ];
     }
 
