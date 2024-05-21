@@ -11,7 +11,8 @@
 <body>
     <h1>投稿一覧</h1>
     @foreach ($diaries as $diary) 
-    <h3>時間：{{ $diary->timestamps }}</h3>
+        <h2>アカウント名：{{ $diary->user->account }}</h2>
+        <h3>時間：{{ $diary->timestamps }}</h3>
         <p>睡眠：{{ $diary->sleep }}</p>
         <br>
         <p>疲労：{{ $diary->tired }}</p>
@@ -21,13 +22,16 @@
         <p>二日酔い：{{ $diary->hangover }}</p>
         <br>
         @if($diary->memo)
-        <p>一言メモ：{{ $diary->memo }}</p>
+            <p>一言メモ：{{ $diary->memo }}</p>
+        @else
+            <p>一言メモはありません。</p>
         @endif
         <br>
         @if($diary->photo)
-        <p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p>  
+            <p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p>  
+        @else
+            <p>写真はありません。</p>
         @endif
-        <!-- 写真が空欄の時の処理 !!!!!-->
     @endforeach 
 
     <h3><a href="{{ route('users.mypage')}}">マイページはこちら</a></h3>
