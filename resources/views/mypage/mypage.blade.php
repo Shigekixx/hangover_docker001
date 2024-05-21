@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <p>アカウント:{{ $user_info->account }}</p>
+    <p>アカウント:{{ $user->account }}</p>
     <br>
-    <form action ="{{route('mypage.diary')}}" method="POST" enctype="multipart/form-data">
+    <form action ="{{route('diary.diary')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
         <label for="diary">本日の記録</label>
@@ -70,11 +70,25 @@
         </ul>
     </div>
     @endif
-
     <br>
     <form action ="{{route('login.logout')}}" method="POST">
         @csrf
         <button type="submit"> ログアウト </button>
     </form>
+
+    <!-- 自分の投稿が一覧表示 -->
+    @foreach ($user->diary as $diary)
+        <h3>時間：{{ $diary->timestamps }}</h3>
+        <p>睡眠：{{ $diary->sleep }}</p>
+        <br>
+        <p>疲労：{{ $diary->tired }}</p>
+        <br>
+        <p>飲酒：{{ $diary->drink }}</p>
+        <br>
+        <p>二日酔い：{{ $diary->hangover }}</p>
+        <br>
+    @endforeach 
+
+    <h3><a href="{{ route('diary.index')}}">投稿一覧はこちら</a></h3>
 </body>
 </html>

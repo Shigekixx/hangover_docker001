@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\DiaryRequest;
@@ -28,14 +27,14 @@ class UsersController extends Controller
         $user->password = $request->password;
         $user->save();
         Auth::login($user);
-        return redirect()->route('mypage.mypage');
+        return redirect()->route('users.mypage');
     }
 
     //マイページを表示
     public function mypage()
     {   
         $id = Auth::id();
-        $user = DB::table('users')->find($id);
-        return view('mypage.mypage',['user_info'=>$user]);
+        $user = User::with('diary')->find($id);
+        return view('mypage.mypage',['user'=>$user]);
     }
 }

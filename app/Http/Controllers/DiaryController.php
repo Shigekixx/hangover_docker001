@@ -9,7 +9,7 @@ use App\Http\Requests\DiaryRequest;
 use App\Models\User;//Userモデルを使用するために追加
 use App\Models\Diary;//Userモデルを使用するために追加
 
-class MypageController extends Controller
+class DiaryController extends Controller
 {
     //マイページにて新規記録の入力
     public function diary(DiaryRequest $request)
@@ -29,5 +29,12 @@ class MypageController extends Controller
 
         $diary->save();
         return redirect()->route('users.mypage');
+    }
+
+    //マイページに記入した内容の一覧
+    public function index()
+    {
+        $diaries = Diary::all();
+        return view('diary.index',['diaries'=>$diaries]);
     }
 }
