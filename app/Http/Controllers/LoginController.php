@@ -29,10 +29,11 @@ class LoginController extends Controller
         return back()->withErrors(['email' => 'メールアドレス・パスワードに不備があります']); // ログイン画面に戻る
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/');
     }
 }
