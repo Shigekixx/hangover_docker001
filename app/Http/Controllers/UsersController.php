@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\DiaryRequest;
 use App\Models\User;//Userモデルを使用するために追加
+use App\Models\Diary;//Userモデルを使用するために追加
 
 class UsersController extends Controller
 {
@@ -31,6 +34,8 @@ class UsersController extends Controller
     //マイページを表示
     public function mypage()
     {   
-        return view('mypage.mypage');
+        $id = Auth::id();
+        $user = DB::table('users')->find($id);
+        return view('mypage.mypage',['user_info'=>$user]);
     }
 }

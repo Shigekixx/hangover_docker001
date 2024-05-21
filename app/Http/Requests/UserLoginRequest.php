@@ -36,15 +36,4 @@ class UserLoginRequest extends FormRequest
             'password.required'=>'パスワードを入力してください',
         ];
     }
-
-    public function authenticate()
-    {
-        $credentials = $this->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('mypage.mypage'); // ログイン後のリダイレクト先を指定
-        }
-
-        return back()->withErrors(['email' => 'メールアドレス・パスワードに不備があります']); // ログイン画面に戻る
-    }
 }
