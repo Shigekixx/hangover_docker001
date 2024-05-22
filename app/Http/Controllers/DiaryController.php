@@ -37,4 +37,10 @@ class DiaryController extends Controller
         $diaries = Diary::all();
         return view('diary.index',['diaries'=>$diaries]);
     }
+
+    public function show($id)
+    {
+        $diary = Diary::find($id);
+        return view('diary.show',['diary'=>$diary]);
+    }
 }
