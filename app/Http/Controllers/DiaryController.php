@@ -52,4 +52,30 @@ class DiaryController extends Controller
         $diary->delete();
         return redirect()->route('diary.index');
     }
+
+    //投稿削除機能
+    public function update(DiaryRequest $request, $id)
+    {   
+        $diary = Diary::find($id);
+        $diary->user_id = auth()->id();
+        $diary->sleep = $request->sleep;
+        $diary->tired = $request->tired;
+        $diary->drink = $request->drink;
+        $diary->hangover = $request->hangover;
+        $diary->memo = $request->memo;
+        if ($request->hasFile('photo')) {
+            $diary->photo = $request->file('photo')->store('public');
+        } else {
+            $diary->photo = null;
+        }
+        $diary->save();
+        return redirect()->route('diary.show', ['id'=>$id]);
+    }
+
+    //編集画面表示機能
+    public function updatepage($id)
+    {
+        $diary = Diary::find($id);
+        return view('update.update',['diary'=>$diary]);
+    }
 }

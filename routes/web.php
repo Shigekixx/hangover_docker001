@@ -17,5 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::POST('/logout',[LoginController::class,'logout'])->name('login.logout');
     Route::get('/index',[DiaryController::class,'index'])->name('diary.index');
     Route::delete('/index/{id}',[DiaryController::class,'delete'])->name('diary.delete');
+    Route::get('/update/{id}',[DiaryController::class,'updatepage'])->name('diary.updatepage');  
+    Route::put('/update/{id}',[DiaryController::class,'update'])->name('diary.update');    
     Route::get('/index/{id}',[DiaryController::class,'show'])->name('diary.show');
 });
