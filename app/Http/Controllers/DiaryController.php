@@ -44,12 +44,12 @@ class DiaryController extends Controller
         $diary = Diary::find($id);
         return view('diary.show',['diary'=>$diary]);
     }
-    
+
     //投稿削除機能
     public function delete($id)
     {   
         $diary = Diary::find($id);
         $diary->delete();
-        return redirect()->back();
+        return redirect()->route('diary.index');
     }
 }
