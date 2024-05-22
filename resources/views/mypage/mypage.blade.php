@@ -17,41 +17,53 @@
         <label for="diary">本日の記録</label>
         </div>
         <br>
-        <select name="sleep" id="sleep">
-            <option value="">--睡眠--</option>
-            <option value="0">1 全然足りない</option>
-            <option value="1">2 もう少し取りたい</option>
-            <option value="2">3 最低限取れてる</option>
-            <option value="3">4 もう少しで調子良い</option>
-            <option value="4">5 絶好調</option>
-        </select>
+        <div style="display: flex; align-items: center;">
+            <span>睡眠：</span>
+            <select name="sleep" id="sleep">
+                <option value="">-- 選択してください --</option>
+                <option value="0">1 全然足りない</option>
+                <option value="1">2 もう少し取りたい</option>
+                <option value="2">3 最低限取れてる</option>
+                <option value="3">4 もう少しで調子良い</option>
+                <option value="4">5 絶好調</option>
+            </select>
+        </div>
         <br>
-        <select name="tired" id="tired">
-            <option value="">--疲労--</option>
-            <option value="0">1 限界</option>
-            <option value="1">2 かなり疲れている</option>
-            <option value="2">3 疲れている</option>
-            <option value="3">4 疲労を感じない</option>
-            <option value="4">5 絶好調</option>
-        </select>
+        <div style="display: flex; align-items: center;">
+            <span>疲労：</span>
+            <select name="tired" id="tired">
+                <option value="">--選択してください--</option>
+                <option value="0">1 限界</option>
+                <option value="1">2 かなり疲れている</option>
+                <option value="2">3 疲れている</option>
+                <option value="3">4 疲労を感じない</option>
+                <option value="4">5 絶好調</option>
+            </select>
+        </div>
         <br>
-        <select name="drink" id="drink">
-            <option value="">--飲酒量--</option>
-            <option value="0">1 飲み過ぎ</option>
-            <option value="1">2 ちょっとやりすぎ？？</option>
-            <option value="2">3 気分が良くなっちゃって</option>
-            <option value="3">4 普通かな</option>
-            <option value="4">5 少なめ</option>
-        </select>
+        <div style="display: flex; align-items: center;">
+            <span>飲酒量：</span>
+            <select name="drink" id="drink">
+                <option value="">--選択してください--</option>
+                <option value="0">1 飲み過ぎ</option>
+                <option value="1">2 ちょっとやりすぎ？？</option>
+                <option value="2">3 気分が良くなっちゃって</option>
+                <option value="3">4 普通かな</option>
+                <option value="4">5 少なめ</option>
+            </select>
+        </div>
         <br>
-        <select name="hangover" id="hangover">
-            <option value="">--二日酔い--</option>
-            <option value="0">1 正直終わってる</option>
-            <option value="1">2 かなりきつい</option>
-            <option value="2">3 気持ち悪い</option>
-            <option value="3">4 ちょっと頭痛い</option>
-            <option value="4">5 健康</option>
-        </select>
+        <div style="display: flex; align-items: center;">
+            <span>二日酔い：</span>
+            <select name="hangover" id="hangover">
+                <option value="">--選択してください--</option>
+                <option value="0">1 正直終わってる</option>
+                <option value="1">2 かなりきつい</option>
+                <option value="2">3 気持ち悪い</option>
+                <option value="3">4 ちょっと頭痛い</option>
+                <option value="4">5 健康</option>
+            </select>
+        </div>
         <br>
         <label for="memo">一言メモ</label>
         <input type="text" name="memo" id="memo">
