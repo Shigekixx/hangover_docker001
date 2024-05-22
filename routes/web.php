@@ -15,9 +15,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage',[UsersController::class,'mypage'])->name('users.mypage');
     Route::POST('/mypage',[DiaryController::class,'diary'])->name('diary.diary');
     Route::POST('/logout',[LoginController::class,'logout'])->name('login.logout');
-    Route::get('/index',[DiaryController::class,'index'])->name('diary.index');
-    Route::delete('/index/{id}',[DiaryController::class,'delete'])->name('diary.delete');
-    Route::get('/update/{id}',[DiaryController::class,'updatepage'])->name('diary.updatepage');  
-    Route::put('/update/{id}',[DiaryController::class,'update'])->name('diary.update');    
-    Route::get('/index/{id}',[DiaryController::class,'show'])->name('diary.show');
+    Route::get('/diary',[DiaryController::class,'index'])->name('diary.index');
+    Route::get('/diary/{id}',[DiaryController::class,'show'])->name('diary.show');
+    Route::delete('/diary/{id}',[DiaryController::class,'delete'])->name('diary.delete');
+    Route::get('/diary/{id}/updatepage',[DiaryController::class,'updatepage'])->name('diary.updatepage');  
+    Route::put('/diary/{id}/updatepage',[DiaryController::class,'update'])->name('diary.update');    
 });
