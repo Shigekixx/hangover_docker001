@@ -37,4 +37,14 @@ class UsersController extends Controller
         $user = User::with('diary')->find($id);
         return view('mypage.mypage',['user'=>$user]);
     }
+
+    //ユーザー削除機能
+    public function userdelete()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('login.showlogin');
+    }
+    
 }

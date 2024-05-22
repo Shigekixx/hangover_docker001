@@ -14,6 +14,7 @@ Route::POST('/users',[UsersController::class,'register'])->name('users.register'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage',[UsersController::class,'mypage'])->name('users.mypage');
     Route::POST('/mypage',[DiaryController::class,'diary'])->name('diary.diary');
+    Route::delete('/mypage',[UsersController::class,'userdelete'])->name('users.userdelete');
     Route::POST('/logout',[LoginController::class,'logout'])->name('login.logout');
     Route::get('/diary',[DiaryController::class,'index'])->name('diary.index');
     Route::get('/diary/{id}',[DiaryController::class,'show'])->name('diary.show');
