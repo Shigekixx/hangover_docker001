@@ -29,5 +29,11 @@
     @else
         <p>写真はありません。</p>
     @endif
+    <br>
+        <form action="{{ route('diary.delete', ($diary->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
+            @csrf
+            @method('DELETE')
+            <button type="submit"> 削除 </button>
+        </form> 
     <h3><a href="{{ route('diary.index')}}">投稿一覧はこちら</a></h3>
 </body>

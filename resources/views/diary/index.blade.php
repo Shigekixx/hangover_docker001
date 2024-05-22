@@ -27,19 +27,7 @@
             <p>一言メモはありません。</p>
         @endif
         <br>
-        @if($diary->photo)
-            <p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p>  
-        @else
-            <p>写真はありません。</p>
-        @endif
-        <br>
         <h3><a href="{{ route('diary.show', $diary->id) }}">投稿詳細はこちら</a></h3> {{-- show.blade.phpへのリンク --}}
-        <br>
-        <form action="{{ route('diary.delete', ($diary->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
-            @csrf
-            @method('DELETE')
-            <button type="submit"> 削除 </button>
-        </form> 
     @endforeach 
 
     <h3><a href="{{ route('users.mypage')}}">マイページはこちら</a></h3>
