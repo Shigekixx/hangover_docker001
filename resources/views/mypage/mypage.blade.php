@@ -10,6 +10,11 @@
 
 <body>
     <p>アカウント:{{ $user->account }}</p>
+    <form action="{{ route('users.userdelete', ($user->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
+        @csrf
+        @method('DELETE')
+        <button type="submit"> 削除 </button>
+    </form>
     <br>
     <form action ="{{route('diary.diary')}}" method="POST" enctype="multipart/form-data">
         @csrf
