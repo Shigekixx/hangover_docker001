@@ -37,10 +37,17 @@ class DiaryController extends Controller
         $diaries = Diary::all();
         return view('diary.index',['diaries'=>$diaries]);
     }
-
+    //投稿詳細画面機能
     public function show($id)
     {
         $diary = Diary::find($id);
         return view('diary.show',['diary'=>$diary]);
+    }
+    //投稿削除機能
+    public function delete($id)
+    {
+        $diary = Diary::find($id);
+        $diary->delete();
+        return redirect()->back();
     }
 }
