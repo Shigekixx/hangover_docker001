@@ -15,6 +15,10 @@ class User extends Authenticatable
         return $this->hasMany(Diary::class);
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    
     /**
      * The attributes that are mass assignable.
      *
