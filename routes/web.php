@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/mypage',[UsersController::class,'userdelete'])->name('users.userdelete');
     //アカウント名の変更
     Route::get('/mypage/{account}',[AccountUpdateController::class,'accountupdatepage'])->name('users.accountupdatepage');
-    Route::put('/mypage/{account}',[AccountUpdateController::class,'userupdate'])->name('users.accountupdate');
+    Route::put('/mypage/{account}',[AccountUpdateController::class,'accountupdate'])->name('users.accountupdate');
     //メールアドレス・パスワードの変更
     Route::get('/mypage/{update}/update',[UserUpdateController::class,'userupdatepage'])->name('users.userupdatepage');
     Route::put('/mypage/{update}/update',[UserUpdateController::class,'userupdate'])->name('users.userupdate');
