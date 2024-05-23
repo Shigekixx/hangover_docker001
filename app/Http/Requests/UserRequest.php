@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'password'=>'required',
         ];
     }
+    
     public function messages()
     {
         return[

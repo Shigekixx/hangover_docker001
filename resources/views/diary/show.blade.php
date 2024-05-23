@@ -30,7 +30,7 @@
         <p>写真はありません。</p>
     @endif
     <br>
-    <a href="{{ route('diary.update', ($diary->id) ) }}">更新ページ</a>
+    <a href="{{ route('diary.updatepage', ($diary->id) ) }}">更新ページ</a>
     <form action="{{ route('diary.delete', ($diary->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
         @csrf
         @method('DELETE')
