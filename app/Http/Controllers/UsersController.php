@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\DiaryRequest;
 use App\Models\User;//Userモデルを使用するために追加
 use App\Models\Diary;//Userモデルを使用するために追加
@@ -46,5 +47,22 @@ class UsersController extends Controller
         $user->delete();
         return redirect()->route('login.showlogin');
     }
+
+    public function accountupdatepage($id)
+    {
+        $user = User::find($id);
+        return view('mypage.accountupdate',['user'=>$user]);
+    }
     
+    public function accountupdate(UserUpdateRequest $request,$id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->account = $request->account;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('users.mypage');
+    }
 }

@@ -16,6 +16,10 @@
         <button type="submit"> 削除 </button>
     </form>
     <br>
+    <a href="{{ route('users.accountupdatepage', ($user->id) ) }}">アカウント名変更はこちらから</a>
+    <br>
+    <a href="{{ route('users.userupdatepage', ($user->id) ) }}">メールアドレス・パスワード変更はこちらから</a>
+    <br>
     <form action ="{{route('diary.diary')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
