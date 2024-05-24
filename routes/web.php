@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\AccountUpdateController;
 use App\Http\Controllers\UserUpdateController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/',[LoginController::class,'showlogin'])->name('login.showlogin');
 Route::POST('/login',[LoginController::class,'login'])->name('login.login');
@@ -32,5 +33,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/diary/{id}',[DiaryController::class,'show'])->name('diary.show');
     Route::delete('/diary/{id}',[DiaryController::class,'delete'])->name('diary.delete');
     Route::get('/diary/{id}/updatepage',[DiaryController::class,'updatepage'])->name('diary.updatepage');  
-    Route::put('/diary/{id}/updatepage',[DiaryController::class,'update'])->name('diary.update');    
+    Route::put('/diary/{id}/updatepage',[DiaryController::class,'update'])->name('diary.update');   
+    
+    //Diaryのコメント
+    Route::POST('/diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
+    Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
+
 });

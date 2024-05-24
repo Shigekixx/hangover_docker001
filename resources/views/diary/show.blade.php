@@ -36,5 +36,39 @@
         @method('DELETE')
         <button type="submit"> 削除 </button>
     </form>
+    <br>
+    <h3>コメント一覧</h3>
+
+    @foreach ($diary->comment as $comment) {{-- CommentControllerのindexメソッド内の「$comments」を受け取る --}}
+        <p>コメント：{{ $comment->comment }}</p>
+        <br>
+        <form action="{{ route('comment.destroy', ($comment->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
+        @csrf
+        @method('DELETE')
+        <button type="submit"> 削除 </button>
+    </form>
+    @endforeach 
+
+    <br>
+    <form action="{{ route('comment.store', ($diary->id) ) }}" method="POST" onsubmit="return confirm('コメント投稿しますか？');" novalidate>
+    @csrf
+        <div>
+        <label for="diary">コメント投稿</label>
+        </div>
+        <label for="comment">コメント</label>
+        <input type="text" name="comment" id="comment">
+        <button type="submit"> 投稿する</button>
+    </form>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <h3><a href="{{ route('diary.index')}}">投稿一覧はこちら</a></h3>
 </body>
