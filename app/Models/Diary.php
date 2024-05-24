@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Bookmark;
+
 
 class Diary extends Model
 {
@@ -16,4 +19,10 @@ class Diary extends Model
     public function comment(){
         return $this->hasMany(Comment::class);
     }
+
+    public function bookmarkuser()
+    {
+        return $this->belongsToMany(User::class, 'bookmarks')->withTimestamps();
+    }
+    
 }

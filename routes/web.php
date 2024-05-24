@@ -7,6 +7,7 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\AccountUpdateController;
 use App\Http\Controllers\UserUpdateController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\BookmarkController;
 
 Route::get('/',[LoginController::class,'showlogin'])->name('login.showlogin');
 Route::POST('/login',[LoginController::class,'login'])->name('login.login');
@@ -38,5 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Diaryのコメント
     Route::POST('/diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
     Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
-
 });
+
+
+//Bookmark
+Route::POST('/bookmark/{diaryId}',[BookmarkController::class,'good'])->name('bookmark.good');
+Route::delete('/bookmark/{diaryd}',[BookmarkController::class,'bad'])->name('bookmark.bad');
