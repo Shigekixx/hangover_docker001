@@ -41,7 +41,12 @@
 
     @foreach ($diary->comment as $comment) {{-- CommentControllerのindexメソッド内の「$comments」を受け取る --}}
         <p>コメント：{{ $comment->comment }}</p>
-        <br>   
+        <br>
+        <form action="{{ route('comment.destroy', ($comment->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
+        @csrf
+        @method('DELETE')
+        <button type="submit"> 削除 </button>
+    </form>
     @endforeach 
 
     <br>

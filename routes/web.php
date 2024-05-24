@@ -36,5 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/diary/{id}/updatepage',[DiaryController::class,'update'])->name('diary.update');   
     
     //Diaryのコメント
-    Route::POST('diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
+    Route::POST('/diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
+    Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
+
 });

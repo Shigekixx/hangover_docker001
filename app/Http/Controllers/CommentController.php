@@ -18,4 +18,12 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->back(); 
     }
+
+    //投稿削除機能
+    public function destroy($id)
+    {   
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back();
+    }
 }
