@@ -31,7 +31,7 @@
             <form action="{{ route('bookmark.bad', $diary->id ) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" > いいね解除 </button>
+            <button type="submit"> いいね解除 </button>
         @else
             <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
             @csrf

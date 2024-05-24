@@ -109,6 +109,18 @@
         <p>二日酔い：{{ $diary->hangover }}</p>
         <br>
     @endforeach 
+    <h3>お気に入り投稿一覧</h3>
+    @foreach ($user->bookmarkdiary as $bookmarkdiary) 
+        <h3>アカウント名：{{ $user->account }}</h3>
+        <p>睡眠：{{ $bookmarkdiary->sleep }}</p>
+        <br>
+        <p>疲労：{{ $bookmarkdiary->tired }}</p>
+        <br>
+        <p>飲酒：{{  $bookmarkdiary->drink }}</p>
+        <br>
+        <p>二日酔い：{{ $bookmarkdiary->hangover }}</p>
+        <br>
+    @endforeach 
 
     <h3><a href="{{ route('diary.index')}}">投稿一覧はこちら</a></h3>
 </body>

@@ -29,6 +29,18 @@
     @else
         <p>写真はありません。</p>
     @endif
+
+    @if(Auth::user()->bookmarkdiary->contains($diary->id))
+        <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
+        @csrf
+        <button type="submit"> いいね </button>
+        </form>
+    @else
+        <form action="{{ route('bookmark.bad', $bookmark->id ) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit"> いいね解除 </button>
+    @endif
     <br>
     <a href="{{ route('diary.updatepage', ($diary->id) ) }}">更新ページ</a>
     <form action="{{ route('diary.delete', ($diary->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>

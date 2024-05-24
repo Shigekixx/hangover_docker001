@@ -35,13 +35,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/diary/{id}',[DiaryController::class,'delete'])->name('diary.delete');
     Route::get('/diary/{id}/updatepage',[DiaryController::class,'updatepage'])->name('diary.updatepage');  
     Route::put('/diary/{id}/updatepage',[DiaryController::class,'update'])->name('diary.update');   
-    
     //Diaryのコメント
     Route::POST('/diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
     Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
+    //チャットルーム
 });
 
 
 //Bookmark
 Route::POST('/bookmark/{diaryId}',[BookmarkController::class,'good'])->name('bookmark.good');
-Route::delete('/bookmark/{diaryd}',[BookmarkController::class,'bad'])->name('bookmark.bad');
+Route::delete('/bookmark/{diaryId}',[BookmarkController::class,'bad'])->name('bookmark.bad');
