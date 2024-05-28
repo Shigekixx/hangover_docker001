@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <h2>アカウント名：{{ $diary->user->account }}</h2>
@@ -30,16 +31,17 @@
         <p>写真はありません。</p>
     @endif
 
-    @if(Auth::user()->bookmarkdiary->contains($diary->id))
-        <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
-        @csrf
-        <button type="submit"> いいね </button>
+    @if(Auth::user()->bookmarkdiary && Auth::user()->bookmarkdiary->contains($diary->id))
+        <form action="{{ route('bookmark.bad', $diary->id ) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"> いいね解除 </button>
         </form>
     @else
-        <form action="{{ route('bookmark.bad', $bookmark->id ) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit"> いいね解除 </button>
+        <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
+            @csrf
+            <button type="submit"> いいね </button>
+        </form>
     @endif
     <br>
     <a href="{{ route('diary.updatepage', ($diary->id) ) }}">更新ページ</a>
@@ -83,4 +85,6 @@
     @endif
 
     <h3><a href="{{ route('diary.index')}}">投稿一覧はこちら</a></h3>
+
+    <p>Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a></p>
 </body>

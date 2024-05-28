@@ -9,7 +9,9 @@ use App\Http\Controllers\UserUpdateController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\BookmarkController;
 
-Route::get('/',[LoginController::class,'showlogin'])->name('login.showlogin');
+
+Route::get('/',[LoginController::class,'confirm'])->name('login.confirm');
+Route::get('/login',[LoginController::class,'showlogin'])->name('login.showlogin');
 Route::POST('/login',[LoginController::class,'login'])->name('login.login');
 
 Route::get('/users',[UsersController::class,'showregister'])->name('users.showregister');
@@ -40,8 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
     //チャットルーム
 });
-
-
 //Bookmark
 Route::POST('/bookmark/{diaryId}',[BookmarkController::class,'good'])->name('bookmark.good');
 Route::delete('/bookmark/{diaryId}',[BookmarkController::class,'bad'])->name('bookmark.bad');

@@ -12,7 +12,7 @@ class BookmarkController extends Controller
     public function good($diaryId)
     {
         $diary = Diary::find($diaryId);
-        Auth::user()->bookmarkdiary()->attach($diary);
+        Auth::user()->bookmarkdiary()->syncWithoutDetaching([$diary->id]);
 
         return redirect()->back(); 
     }
