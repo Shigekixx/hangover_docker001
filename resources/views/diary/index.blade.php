@@ -33,6 +33,7 @@
                 @csrf
                 @method('DELETE')
             <button type="submit"> いいね解除 </button>
+            </form>
         @else
             <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
                 @csrf

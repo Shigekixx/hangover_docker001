@@ -20,7 +20,7 @@
     <img id="displayedImage" src="" alt="Image">
 </div>
 
-<script src="script.js"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script>
     var imageUrl = "{{ asset('storage/app/public/IMG_1143.PNG') }}";
 </script>
