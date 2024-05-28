@@ -11,6 +11,14 @@ use App\Models\User;//Userモデルを使用するために追加
 class LoginController extends Controller
 {
     //ログイン画面の表示
+    public function confirm()
+    {
+        return view('login.confirm');
+    }
+
+    
+
+    //ログイン画面の表示
     public function showlogin()
     {
         return view('login.login');

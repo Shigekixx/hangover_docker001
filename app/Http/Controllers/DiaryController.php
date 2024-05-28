@@ -35,8 +35,8 @@ class DiaryController extends Controller
     //マイページに記入した内容の一覧
     public function index()
     {
-        $diaries = Diary::all();
-        return view('diary.index',['diaries'=>$diaries]);
+        $diaries = Diary::with(['user', 'bookmarkuser'])->get(); // 関連付けられたブックマークをロード
+        return view('diary.index', ['diaries' => $diaries]);
     }
 
     //投稿詳細画面機能

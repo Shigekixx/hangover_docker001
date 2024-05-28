@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
@@ -27,16 +28,17 @@
             <p>一言メモはありません。</p>
         @endif
         <br>
-        @if(Auth::user()->bookmarkdiary->contains($diary->id))
+        @if(Auth::user()->bookmarkdiary && Auth::user()->bookmarkdiary->contains($diary->id))
             <form action="{{ route('bookmark.bad', $diary->id ) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" > いいね解除 </button>
+                @csrf
+                @method('DELETE')
+            <button type="submit"> いいね解除 </button>
+            </form>
         @else
             <form action="{{ route('bookmark.good', $diary->id ) }}" method="POST">
-            @csrf
+                @csrf
             <button type="submit"> いいね </button>
-            </form>
+        </form>
         @endif
         <h3><a href="{{ route('diary.show', $diary->id) }}">投稿詳細はこちら</a></h3> {{-- show.blade.phpへのリンク --}}
     @endforeach 
