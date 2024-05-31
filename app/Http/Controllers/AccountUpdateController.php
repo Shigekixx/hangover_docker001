@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;//Userモデルを使用するために追加
+use App\Http\Requests\AccountUpdateRequest;
 
 
 class AccountUpdateController extends Controller
@@ -15,7 +16,7 @@ class AccountUpdateController extends Controller
         return view('mypage.accountupdate',['user'=>$user]);
     }
     
-    public function accountupdate(Request $request,$id)
+    public function accountupdate(AccountUpdateRequest $request,$id)
     {
         $user = User::find($id);
 

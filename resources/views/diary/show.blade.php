@@ -6,30 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style02.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style04.css') }}">
 </head>
 <body>
-    <h2>アカウント名：{{ $diary->user->account }}</h2>
-    <h3>時間：{{ $diary->timestamps }}</h3>
-    <p>睡眠：{{ $diary->sleep }}</p>
-    <br>
-    <p>疲労：{{ $diary->tired }}</p>
-    <br>
-    <p>飲酒：{{ $diary->drink }}</p>
-    <br>
-    <p>二日酔い：{{ $diary->hangover }}</p>
-    <br>
-    @if($diary->memo)
-        <p>一言メモ：{{ $diary->memo }}</p>
-    @else
-        <p>一言メモはありません。</p>
-    @endif
-    <br>
-    @if($diary->photo)
-        <p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p>  
-    @else
-        <p>写真はありません。</p>
-    @endif
+    <h2>アカウント名：{{ $diary->user->account }},{{ $diary->created_at }}</h2>
+    <ul class="diary">
+        <li><p>睡眠：{{ $diary->sleep }}</p></li>
+        <br>
+        <li><p>疲労：{{ $diary->tired }}</p></li>
+        <br>
+        <li><p>飲酒：{{ $diary->drink }}</p></li>
+        <br>
+        <li><p>二日酔い：{{ $diary->hangover }}</p></li>
+        <br>
+        @if($diary->memo)
+            <li><p>一言メモ：{{ $diary->memo }}</p></li>
+        @else
+            <li><p>一言メモはありません。</p></li>
+        @endif
+        <br>
+        @if($diary->photo)
+            <li><p>写真：<img src="{{ Storage::url($diary->photo) }}" alt="Diary Photo"></p></li>  
+        @else
+            <li><p>写真はありません。</p></li>
+        @endif
+    </ul>
 
     @if(Auth::user()->bookmarkdiary && Auth::user()->bookmarkdiary->contains($diary->id))
         <form action="{{ route('bookmark.bad', $diary->id ) }}" method="POST">
@@ -54,7 +56,7 @@
     <h3>コメント一覧</h3>
 
     @foreach ($diary->comment as $comment) {{-- CommentControllerのindexメソッド内の「$comments」を受け取る --}}
-        <p>コメント：{{ $comment->comment }}</p>
+        <li><p>コメント：{{ $comment->comment }}</p></li>
         <br>
         <form action="{{ route('comment.destroy', ($comment->id) ) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" novalidate>
         @csrf

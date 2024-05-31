@@ -17,6 +17,7 @@ class BookmarkController extends Controller
         return redirect()->back(); 
     }
 
+    //ブックマーク削除機能
     public function bad($diaryId)
     {
         Auth::user()->bookmarkdiary()->detach($diaryId);

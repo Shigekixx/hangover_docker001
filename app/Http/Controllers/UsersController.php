@@ -18,7 +18,7 @@ class UsersController extends Controller
         return view('users.register'); // views/users/index.blade.php を表示する
     }
 
-    //ユーザー情報を登録するためのメソッド
+    //ユーザー情報を登録機能
     public function register(UserRequest $request)
     {
         $user = new User; //Usersテーブルに新しく入力されたデータを取得
@@ -39,6 +39,13 @@ class UsersController extends Controller
         return view('mypage.mypage',['user'=>$user]);
     }
 
+    //ユーザー登録画面
+    public function deletepage($id)
+    {
+        $user = User::find($id);
+        return view('mypage.deletepage',['user'=>$user]); // views/users/index.blade.php を表示する
+    }
+
     //ユーザー削除機能
     public function userdelete()
     {
@@ -48,12 +55,14 @@ class UsersController extends Controller
         return redirect()->route('login.showlogin');
     }
 
+    //アカウント情報更新ページ
     public function accountupdatepage($id)
     {
         $user = User::find($id);
         return view('mypage.accountupdate',['user'=>$user]);
     }
     
+    //アカウント情報更新機能
     public function accountupdate(UserUpdateRequest $request,$id)
     {
         $user = User::find($id);

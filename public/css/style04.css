@@ -1,0 +1,59 @@
+li, ul {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+
+/* リストのul要素全体のスタイル */
+.diary {
+list-style-type: none;
+display: flex;
+}
+/* 個々のli要素のスタイル */
+.diary li {
+margin: 10px;
+padding: 10px;
+width: 100px;
+background-color: #06f20a;
+text-align: center;
+}
+
+@media screen and (max-width: 767px){
+    li, ul {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        }
+        
+
+    .diary {
+        list-style-type: none;
+        display: flex;
+        align-items: center; /* 縦方向の中央揃え */
+        justify-content: center; /* 横方向の中央揃え */
+        }
+    
+    .diary ul{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    /* 個々のli要素のスタイル */
+    .diary li {
+        margin: 12px;
+        padding: 12px;
+        width: 100px;
+        background-color: #06f20a;
+        text-align: center;
+    }
+        
+}

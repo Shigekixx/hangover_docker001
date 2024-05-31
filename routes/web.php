@@ -22,7 +22,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage',[UsersController::class,'mypage'])->name('users.mypage');
     //記録登録処理
     Route::POST('/mypage',[DiaryController::class,'diary'])->name('diary.diary');
-    Route::delete('/mypage',[UsersController::class,'userdelete'])->name('users.userdelete');
+
+    //アカウント削除
+    Route::get('/mypage/{delete}/delete',[UsersController::class,'deletepage'])->name('users.deletepage');
+    Route::delete('/mypage/{delete/delete}',[UsersController::class,'userdelete'])->name('users.userdelete');
     //アカウント名の変更
     Route::get('/mypage/{account}',[AccountUpdateController::class,'accountupdatepage'])->name('users.accountupdatepage');
     Route::put('/mypage/{account}',[AccountUpdateController::class,'accountupdate'])->name('users.accountupdate');
@@ -31,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/mypage/{update}/update',[UserUpdateController::class,'userupdate'])->name('users.userupdate');
     //ログアウトの処理
     Route::POST('/logout',[LoginController::class,'logout'])->name('login.logout');
+
     //記録ページ系のルーティング
     Route::get('/diary',[DiaryController::class,'index'])->name('diary.index');
     Route::get('/diary/{id}',[DiaryController::class,'show'])->name('diary.show');
@@ -40,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Diaryのコメント
     Route::POST('/diary/{id}/comment',[CommentController::class,'store'])->name('comment.store');
     Route::delete('/diary/{id}/comment',[CommentController::class,'destroy'])->name('comment.destroy');
-    //チャットルーム
+    
 });
 //Bookmark
 Route::POST('/bookmark/{diaryId}',[BookmarkController::class,'good'])->name('bookmark.good');

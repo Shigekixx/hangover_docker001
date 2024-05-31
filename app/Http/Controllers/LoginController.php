@@ -10,13 +10,11 @@ use App\Models\User;//Userモデルを使用するために追加
 
 class LoginController extends Controller
 {
-    //ログイン画面の表示
+    //年齢確認ページの表示
     public function confirm()
     {
         return view('login.confirm');
     }
-
-    
 
     //ログイン画面の表示
     public function showlogin()
@@ -24,7 +22,7 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    //ログインメソッド
+    //ログイン機能
     public function login(UserLoginRequest $request)
     {
         $credentials = $request->validated();
@@ -37,6 +35,7 @@ class LoginController extends Controller
         return back()->withErrors(['email' => 'メールアドレス・パスワードに不備があります']); // ログイン画面に戻る
     }
 
+    //ログアウト機能
     public function logout(Request $request)
     {
         Auth::logout();

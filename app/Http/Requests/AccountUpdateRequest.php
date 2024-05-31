@@ -31,4 +31,5 @@ class AccountUpdateRequest extends FormRequest
             'email.unique' => 'このメールアドレスはすでに使用されています',
         ];
     }
+    
 }
